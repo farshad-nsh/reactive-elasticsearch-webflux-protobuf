@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package demo;
+
+
+option java_package = "com.farshad.reactive.elastic.generated.domain";
+option java_outer_classname = "BondProtos";
+
+
+message Bond {
+    required string title = 1;
+    required string price = 2;
+}
+
+message listBond{
+repeated Bond bond=1;
+}

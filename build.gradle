@@ -1,0 +1,48 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.3'
+    }
+}
+
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-webflux')
+    //implementation('org.springframework.data:spring-data-elasticsearch')
+    implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:6.5.3')
+    implementation('org.elasticsearch:elasticsearch:6.5.3')
+    
+    compileOnly('org.projectlombok:lombok:1.18.0')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('io.projectreactor:reactor-test')
+
+
+    compile('com.fasterxml.jackson.core:jackson-databind')
+    compile('com.google.protobuf:protobuf-java:3.4.0')
+    compile('com.googlecode.protobuf-java-format:protobuf-java-format:1.4')
+
+
+    compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.0.0-RC1'
+    compile group: 'com.hubspot.jackson', name: 'jackson-datatype-protobuf', version: '0.9.10-preJackson2.7-proto3'
+}
